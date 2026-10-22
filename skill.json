@@ -1,0 +1,62 @@
+{
+  "name": "genpark-agentic-commerce-dynamic-b2b-tier-volume-rebate-clawback-skill",
+  "version": "1.0.0",
+  "title": "B2B Dynamic Tier Volume Rebate & Clawback Settlement Skill",
+  "description": "B2B annual procurement bracket tier rebate, retro-active rebate clawback if annual minimum threshold missed, and credit memo reconciler. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "volume-rebates",
+    "clawback",
+    "b2b-procurement",
+    "credit-memo",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "calculate_annual_bracket_volume_rebate",
+      "description": "Calculate progressive or cliff volume rebate based on customer accumulated annual spend.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "annual_spend_usd": {
+            "type": "number"
+          },
+          "tier_thresholds": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "annual_spend_usd",
+          "tier_thresholds"
+        ]
+      }
+    },
+    {
+      "name": "reconcile_shortfall_rebate_clawback",
+      "description": "Calculate clawback penalty and invoice adjustment if customer upfront discounts exceeded actual realized tier.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "contracted_tier_rebate_pct": {
+            "type": "number"
+          },
+          "actual_earned_tier_rebate_pct": {
+            "type": "number"
+          },
+          "actual_annual_spend_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "contracted_tier_rebate_pct",
+          "actual_earned_tier_rebate_pct",
+          "actual_annual_spend_usd"
+        ]
+      }
+    }
+  ]
+}
